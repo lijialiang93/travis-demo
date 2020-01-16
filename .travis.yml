@@ -1,0 +1,9 @@
+sudo: required
+services:
+  - docker
+
+before_install:
+  - docker build -t travis-demo -f Dockerfile.dev .
+
+script:
+  - docker run -e CI=true travis-demo npm run test
